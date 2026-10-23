@@ -1,0 +1,23 @@
+fancy-items/bin/
+fancy-items/obj/
+Release/
+# 第三方引用库（不随仓库分发）
+**/lib/*.dll
+**/lib/*.pdb
+
+# 游戏程序集副本（绝不允许提交）
+game_dlls/
+*_Data/
+TeamSoda.Duckov.*.dll
+ItemStatsSystem.dll
+SodaLocalization.dll
+UnityEngine*.dll
+Assembly-CSharp.dll
+0Harmony.dll
+
+# 打包与运行时产物
+*.zip
+*.log
+tools/out/
+backup/
+*.bak

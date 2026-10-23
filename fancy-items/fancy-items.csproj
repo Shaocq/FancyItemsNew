@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+
+    <!-- 娓告垙鎸?"<info.ini 鐨?name>.dll" 鏌ユ壘绋嬪簭闆嗭紝鍚嶅瓧蹇呴』涓?info.ini 鐨?name 涓€鑷?-->
+    <AssemblyName>FancyItemsNew</AssemblyName>
+
+    <!-- 娓告垙瀹夎鐩綍锛堝寘鍚?Duckov.exe锛夛紱鍙敤 -p:DuckovPath="..." 瑕嗙洊 -->
+    <DuckovPath Condition="'$(DuckovPath)' == ''">E:\Steam\steamapps\common\Escape from Duckov</DuckovPath>
+    <SubPath>\Duckov_Data\Managed\</SubPath>
+
+    <!-- 涓嶆妸娓告垙绋嬪簭闆嗗鍒惰繘杈撳嚭鐩綍锛岄伩鍏嶉儴缃叉椂璇嫹 100+ 涓?DLL -->
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="$(DuckovPath)$(SubPath)TeamSoda.*">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(DuckovPath)$(SubPath)ItemStatsSystem.dll">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(DuckovPath)$(SubPath)Plugins.dll">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(DuckovPath)$(SubPath)FMODUnity.dll">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(DuckovPath)$(SubPath)Unity*">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!--
+      Harmony 涓嶅唴宓屻€佷笉闅?mod 鍒嗗彂锛岃繍琛屾椂渚濊禆鍓嶇疆銆孒armonyLib銆嶏紙宸ュ潑 3589088839锛?      宸茬粡鎶?0Harmony.dll 杞藉叆杩涚▼銆傝繖閲屼粎浣滅紪璇戞湡寮曠敤銆?  -->
+  <ItemGroup>
+    <Reference Include="..\..\harmony\0Harmony.dll">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
