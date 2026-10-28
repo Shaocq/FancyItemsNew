@@ -37,33 +37,10 @@ namespace FancyItems.Constants
         public const float PerformanceUpdateInterval = 0.1f;
 
         /// <summary>
-        /// Boss 专属枪械的 TypeID 白名单。
-        /// 这些枪械在原版数据里的 quality 是 9 / 999 等特殊段（不在 2~8 区间），
-        /// 因此本来拿不到背景色；这里统一按 5 级（橙色）渲染。
-        /// 数据来源：ItemAssetsCollection 实测导出，完整清单见仓库根 docs_boss_guns.md
-        /// </summary>
-        public static readonly HashSet<int> BossGunItemIds = new HashSet<int>
-        {
-            914,   // 咕噜枪      PST_StormBoss_Poison
-            915,   // 风暴枪      BR_Storm_Space
-            916,   // 啪啦枪      MG_StormBoss_Fire
-            917,   // 比利枪      SHT_StormBoss_Elec
-            437,   // VPO-劳登改  Sniper_VPO_Deng
-            1260,  // 糖果枪      SHT_Candy_Ghost
-            1264,  // 灵能枪      SHT_TOZ106_Ghost
-            1353,  // BSG-I       SHT_SnowBoss_Ice
-            1354,  // BSG-F       SHT_SnowBoss_Fire
-            1396,  // 纳米枪      NM_NMGun_Elec
-            1432,  // Saiga-12K Tagilla改   SHT_Saiga12_TagillaB
-            1433,  // AK-74U Tagilla改      SMG_AK74_Tagilla
-            1480,  // TS-128智能型狙击枪    SNP_TecSniper_Elec
-            1561,  // 死与舞      PST_MingChao_Carletta
-            1562,  // 溢彩荧辉    PST_MingChao_Lynae
-            1563,  // （无本地化名）SNP_MingChao_Carletta
-        };
-
-        /// <summary>
-        /// Boss 枪械统一使用的品质档位（5 = 橙色）
+        /// 特殊段枪械统一使用的品质档位（5 = 橙色）。
+        /// 判定规则见 QualityColorConfig.ResolveQuality：quality &gt; 8 且带 Gun 标签、
+        /// 不带 DestroyOnLootBox。原版这类枪共 54 件（quality 9 / 99 / 999），
+        /// 完整清单见仓库根 docs_boss_guns.md。
         /// </summary>
         public const int BossGunQuality = 5;
 

@@ -155,8 +155,8 @@ namespace FancyItems.Systems.UI
                 return;
             }
 
-            // Boss 专属枪械的原始 quality 是 9 / 999 等特殊段，统一按 5 级（橙色）处理
-            int quality = QualityColorConfig.ResolveQuality(currentItem.Quality, currentItem.TypeID);
+            // 特殊段枪械（quality 9 / 99 / 999）统一按 5 级（橙色）处理
+            int quality = QualityColorConfig.ResolveQuality(currentItem.Quality, currentItem.Tags);
 
             if (currentItem.Inspected && !lastInspected && !soundPlayed)
             {

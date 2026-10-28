@@ -30,14 +30,18 @@ namespace FancyItems.Systems.UI
 
         /// <summary>
         /// 解析物品实际用于渲染/音效的品质。
-        /// Boss 专属枪械在原版数据里的 quality 是 9 / 999 等特殊段，统一按 5 级（橙色）处理；
+        /// 特殊段枪械（Boss 枪、元素改型、事件枪、任务「特制」枪等）在原版数据里的
+        /// quality 是 9 / 99 / 999，本来落在 [2, 8] 之外、拿不到背景色；
+        /// 这里把「可拾取的枪械」统一按 5 级（橙色）处理。
+        /// 判据：quality 大于 8，带 Gun 标签，且不带 DestroyOnLootBox
+        /// （后者是敌人专用、拾取即销毁的枪，玩家看不到）。
         /// 其余物品原样返回。
         /// </summary>
         /// <param name="quality">物品原始 quality</param>
-        /// <param name="typeID">物品 TypeID</param>
-        public static int ResolveQuality(int quality, int typeID)
+        /// <param name="tags">物品标签集合</param>
+        public static int ResolveQuality(int quality, TagCollection tags)
         {
-            if (Constants.FancyItemsConstants.BossGunItemIds.Contains(typeID))
+            if (quality > 8 && tags != null && tags.Contains("Gun") && !tags.Contains("DestroyOnLootBox"))
             {
                 return Constants.FancyItemsConstants.BossGunQuality;
             }

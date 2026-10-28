@@ -2,9 +2,11 @@
 
 数据来源：`ItemAssetsCollection`（`resources.assets`，path_id `76722`）实测导出。
 
-背景：本 mod 目前只给 `quality` 2~8 的物品上背景色；下列枪械的 `quality` 是 **9 / 99 / 999**，因此完全没有背景色。
+背景：mod 只给 `quality` 2~8 的物品上背景色；下列枪械的 `quality` 是 **9 / 99 / 999**，默认完全没有背景色。
 
-## 一、明确带 Boss 关键字的枪械（玩家可获得，16 件）
+**当前实现**：`QualityColorConfig.ResolveQuality` 对 `quality > 8` 且带 `Gun` 标签、不带 `DestroyOnLootBox` 的物品统一返回 5（橙色）。也就是下面第一、二组共 **54 件**都已按橙色渲染，无需再逐个登记 TypeID。
+
+## 一、明确带 Boss 关键字的枪械（16 件）
 
 | TypeID | quality | 内部名 | 中文名 |
 | --- | --- | --- | --- |
@@ -25,7 +27,7 @@
 | 1562 | 9 | PST_MingChao_Lynae | 溢彩荧辉 |
 | 1563 | 9 | SNP_MingChao_Carletta | (无本地化名) |
 
-## 二、其余特殊品质枪械（玩家可获得，38 件，同样没有背景色）
+## 二、其余特殊品质枪械（38 件）
 
 | TypeID | quality | 内部名 | 中文名 |
 | --- | --- | --- | --- |

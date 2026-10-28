@@ -12,13 +12,14 @@
 
 ### 新增 ✨
 
-- **Boss 专属枪械按橙色（5 级）渲染**：这类枪械在原版数据里的 `quality` 是 9 / 999 等特殊段，此前不在 2~8 区间内，完全拿不到背景色。现在按 TypeID 白名单统一按 5 级处理，背景色与搜索音效都与橙色物品一致。覆盖 16 件：VPO-劳登改、咕噜枪、风暴枪、啪啦枪、比利枪、糖果枪、灵能枪、BSG-I、BSG-F、纳米枪、Saiga-12K Tagilla改、AK-74U Tagilla改、TS-128智能型狙击枪、死与舞、溢彩荧辉、SNP_MingChao_Carletta
-- 白名单定义在 `fancy-items/Constants/FancyItemsConstants.cs`（`BossGunItemIds`），新增 Boss 枪械只需补一个 TypeID
+- **特殊段枪械按橙色（5 级）渲染**：这类枪械在原版数据里的 `quality` 是 9 / 99 / 999（Boss 枪、元素改型、事件枪、任务「特制」枪等），此前不在 2~8 区间内，完全拿不到背景色。现在统一按 5 级处理，背景色与搜索音效都与橙色物品一致，共覆盖 54 件：VPO-劳登改、带电MP7、带火AK-47、TOZ-66龙息、方块枪、噗噗枪、噗噗喷、玩具枪、MF-毒液、十字弩、反曲弓、冰原反曲弓、RPD-凛冬、雪球枪、霜冻SR-3M、MMG-冰锋、AA-12、Saiga-12K、烟花枪、水球枪、QBZ-191、MPX、风暴/雪地/灵能/明潮/Tagilla 系 Boss 枪，以及植物枪 8 件、特制任务枪 7 件
+- **判定改为规则匹配**，不再维护 TypeID 白名单：`quality > 8` 且带 `Gun` 标签、不带 `DestroyOnLootBox`（后者是敌人专用、拾取即销毁的枪）。以后游戏新增特殊品质枪械会自动生效
 - 调查结论整理为仓库根 `docs_boss_guns.md`：玩家可拾取的特殊品质枪械 54 件、敌人专用（`DestroyOnLootBox`）22 件，均附 TypeID 与中文名
 
 ### 变更 🔧
 
-- 品质取值统一走 `QualityColorConfig.ResolveQuality(quality, typeID)`，背景与音效共用同一套解析结果，避免两处逻辑分叉
+- 品质取值统一走 `QualityColorConfig.ResolveQuality(quality, tags)`，背景与音效共用同一套解析结果，避免两处逻辑分叉
+- 品质 0 / 1 的枪械（烂格力克、TT-33、土制猎枪等）不受影响，仍保持原版无背景
 
 ## [0.4.2] - 2026-10-18
 
