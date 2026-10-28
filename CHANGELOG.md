@@ -16,6 +16,10 @@
 - **判定改为规则匹配**，不再维护 TypeID 白名单：`quality > 8` 且带 `Gun` 标签、不带 `DestroyOnLootBox`（后者是敌人专用、拾取即销毁的枪）。以后游戏新增特殊品质枪械会自动生效
 - 调查结论整理为仓库根 `docs_boss_guns.md`：玩家可拾取的特殊品质枪械 54 件、敌人专用（`DestroyOnLootBox`）22 件，均附 TypeID 与中文名
 
+### 修复 🐛
+
+- **工坊 ID 丢失导致上传显示为「新建项目」**：`info.ini` 的 `publishedFileId` 为空，补回 `3822295058`；同时把 `displayName` 对齐线上标题「物品炫彩和搜索音效-优化版」，避免下次上传时把工坊名称改掉
+
 ### 变更 🔧
 
 - 品质取值统一走 `QualityColorConfig.ResolveQuality(quality, tags)`，背景与音效共用同一套解析结果，避免两处逻辑分叉
