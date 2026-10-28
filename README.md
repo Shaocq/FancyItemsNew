@@ -2,7 +2,7 @@
 
 [![游戏](https://img.shields.io/badge/游戏-Escape%20from%20Duckov-blue)](https://store.steampowered.com/app/3167020/)
 [![协议](https://img.shields.io/badge/协议-MIT-yellow)](LICENSE)
-[![版本](https://img.shields.io/badge/版本-1.0.0-brightgreen)](CHANGELOG.md)
+[![版本](https://img.shields.io/badge/版本-1.0.1-brightgreen)](CHANGELOG.md)
 
 > 按物品稀有度给物品格子染上不同背景色，并在搜索完成时播放对应品质的音效。按 F8 打开设置。
 
@@ -12,7 +12,7 @@
 | 框架 | `Duckov.Modding.ModBehaviour` |
 | 前置 | 无（自带配置界面） |
 | 创意工坊 | — |
-| 当前版本 | 1.0.0 |
+| 当前版本 | 1.0.1 |
 | 开源协议 | [MIT](LICENSE) |
 
 ## 安装
@@ -73,6 +73,10 @@
 
 > 背景只对品质 2~8 的物品生效；音效对品质 0~8 生效（0/1 播放普通点击音）。
 > 品质 9 及以上的特殊分类编码（鱼饵、蔬菜、蓝图等）完全保持原版颜色与音效。
+
+**Boss 专属枪械例外**：这类枪械在原版数据里的品质是 9 / 999 等特殊段，现已按 **5 级（橙色）**统一渲染背景并播放对应音效。
+覆盖 16 件：VPO-劳登改、咕噜枪、风暴枪、啪啦枪、比利枪、糖果枪、灵能枪、BSG-I、BSG-F、纳米枪、Saiga-12K Tagilla改、AK-74U Tagilla改、TS-128智能型狙击枪、死与舞、溢彩荧辉、SNP_MingChao_Carletta。
+完整调查清单见 [docs_boss_guns.md](docs_boss_guns.md)。
 
 ## ⚙️ 设置选项
 

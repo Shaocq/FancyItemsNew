@@ -155,13 +155,16 @@ namespace FancyItems.Systems.UI
                 return;
             }
 
+            // Boss 专属枪械的原始 quality 是 9 / 999 等特殊段，统一按 5 级（橙色）处理
+            int quality = QualityColorConfig.ResolveQuality(currentItem.Quality, currentItem.TypeID);
+
             if (currentItem.Inspected && !lastInspected && !soundPlayed)
             {
                 soundPlayed = true;
                 // 音效处理区间 [0, 8]（0/1 也播放）；9 及以上保持原版音效
-                if (QualityColorConfig.IsInSoundRange(currentItem.Quality))
+                if (QualityColorConfig.IsInSoundRange(quality))
                 {
-                    Systems.Audio.QualitySoundManager.PlayQualitySound(currentItem.Quality);
+                    Systems.Audio.QualitySoundManager.PlayQualitySound(quality);
                 }
             }
             lastInspected = currentItem.Inspected;
@@ -182,7 +185,6 @@ namespace FancyItems.Systems.UI
                 return;
             }
 
-            int quality = currentItem.Quality;
             if (quality != lastQuality)
             {
                 lastQuality = quality;

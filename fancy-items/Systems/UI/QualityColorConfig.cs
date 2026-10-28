@@ -29,6 +29,22 @@ namespace FancyItems.Systems.UI
         }
 
         /// <summary>
+        /// 解析物品实际用于渲染/音效的品质。
+        /// Boss 专属枪械在原版数据里的 quality 是 9 / 999 等特殊段，统一按 5 级（橙色）处理；
+        /// 其余物品原样返回。
+        /// </summary>
+        /// <param name="quality">物品原始 quality</param>
+        /// <param name="typeID">物品 TypeID</param>
+        public static int ResolveQuality(int quality, int typeID)
+        {
+            if (Constants.FancyItemsConstants.BossGunItemIds.Contains(typeID))
+            {
+                return Constants.FancyItemsConstants.BossGunQuality;
+            }
+            return quality;
+        }
+
+        /// <summary>
         /// 是否属于视觉处理区间 [2, 8]
         /// 区间外（0/1，以及 9 及以上的特殊分类编码，如 91/999/9999）不渲染背景，
         /// 保持原版颜色表现

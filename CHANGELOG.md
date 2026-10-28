@@ -8,6 +8,18 @@
 > **版本沿革**：`0.4.x` 及以前的条目来自上游 [shiquda/duckov-fancy-items](https://github.com/shiquda/duckov-fancy-items)。
 > 本仓库在 `info.ini` 中标记为 **1.0.0**，是在上游 `0.4.2` 基础上由本仓库作者继续修改的版本。
 
+## [1.0.1] - 2026-10-29
+
+### 新增 ✨
+
+- **Boss 专属枪械按橙色（5 级）渲染**：这类枪械在原版数据里的 `quality` 是 9 / 999 等特殊段，此前不在 2~8 区间内，完全拿不到背景色。现在按 TypeID 白名单统一按 5 级处理，背景色与搜索音效都与橙色物品一致。覆盖 16 件：VPO-劳登改、咕噜枪、风暴枪、啪啦枪、比利枪、糖果枪、灵能枪、BSG-I、BSG-F、纳米枪、Saiga-12K Tagilla改、AK-74U Tagilla改、TS-128智能型狙击枪、死与舞、溢彩荧辉、SNP_MingChao_Carletta
+- 白名单定义在 `fancy-items/Constants/FancyItemsConstants.cs`（`BossGunItemIds`），新增 Boss 枪械只需补一个 TypeID
+- 调查结论整理为仓库根 `docs_boss_guns.md`：玩家可拾取的特殊品质枪械 54 件、敌人专用（`DestroyOnLootBox`）22 件，均附 TypeID 与中文名
+
+### 变更 🔧
+
+- 品质取值统一走 `QualityColorConfig.ResolveQuality(quality, typeID)`，背景与音效共用同一套解析结果，避免两处逻辑分叉
+
 ## [0.4.2] - 2026-10-18
 
 ### 变更 🔧
